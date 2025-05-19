@@ -10,9 +10,8 @@ fun main() {
     println("Epub: $isEpub")
     runBlocking {
         val book = TomatoBook(bookId)
-        buildTomatoBook(book, "./${book.name}." + (if (isEpub) "epub" else "txt"), isEpub) { msg, pos ->
-            print("$msg ")
-            println((pos * 100).toInt().toString() + "%")
+        buildTomatoBook(book, "./${book.name}." + (if (isEpub) "epub" else "txt"), isEpub) {
+            println(it)
         }
     }
 }
